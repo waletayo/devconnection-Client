@@ -1,0 +1,104 @@
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
+  <div class="container">
+    <a class="navbar-brand" href="home">DevConnector</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mobile-nav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="developers"> Developers
+          </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="post">
+            Post Feed
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="dash-Board">
+            Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Logout
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="feed">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Post Form -->
+        <div class="post-form mb-3">
+          <div class="card card-info">
+            <div class="card-header bg-info text-white">
+              Say Somthing...
+            </div>
+            <div class="card-body">
+              <form #addPostForm (ngSubmit)="doPost(addPostForm)" >
+                <div class="form-group">
+                  <textarea class="form-control  form-control-lg" [(ngModel)]="post.text"
+                            autocomplete="off"
+                            #text="ngModel"  name="text" placeholder="Create a post"></textarea>
+                </div>
+                <button type="submit" class="btn btn-dark">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Post Feed -->
+        <div class="posts">
+          <!-- Post Item -->
+          <div class="card card-body mb-3" *ngFor="let post of postResponse">
+            <div class="row" >
+              <div class="col-md-2">
+                <a href="profile.html">
+                  <img class="rounded-circle d-none d-md-block" src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200"
+                       alt="" />
+                </a>
+
+                <br />
+                <p class="text-center">{{post.user.name}}</p>
+              </div>
+              <div class="col-md-10">
+                <p class="lead">{{post.text}}</p>
+                <button type="button" (click)="doLike()" class="btn btn-light mr-1">
+                  <i class="text-info fas fa-thumbs-up"></i>
+                  <span class="badge badge-light">4</span>
+                </button>
+                <button type="button" class="btn btn-light mr-1">
+                  <i class="text-secondary fas fa-thumbs-down"></i>
+                </button>
+                <a href="post.html" class="btn btn-info mr-1">
+                  Comments
+                </a>
+                <!-- <button type="button" class="btn btn-danger mr-1">
+                  <i class="fas fa-times" />
+                </button> -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Footer -->
+<footer class="bg-dark text-white mt-5 p-4 text-center">
+  Copyright &copy; 2018 Dev Connector
+</footer>

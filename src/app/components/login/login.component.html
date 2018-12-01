@@ -1,0 +1,58 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
+  <div class="container">
+    <a class="navbar-brand" href="home">DevConnector</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mobile-nav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="developers"> Developers
+          </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="sign-up">Sign Up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="log-in">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Login -->
+<div class="login">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 m-auto">
+        <h1 class="display-4 text-center">Log In</h1>
+        <p class="lead text-center">Sign in to your DevConnector account</p>
+        <p *ngIf="errorMessage" style="color: dodgerblue" >{{errorMessage}}</p>
+        <form #loginForm (ngSubmit)="doLogin(loginForm)">
+          <div class="form-group">
+            <input type="email" class="form-control form-control-lg" placeholder="Email Address" [(ngModel)]="login.email"
+                   autocomplete="off"
+                   #email="ngModel"  name="email"/>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control form-control-lg" placeholder="Password" [(ngModel)]="login.password"
+                   autocomplete="off"
+                   #password="ngModel" name="password"/>
+          </div>
+          <input  type="submit" class="btn btn-info btn-block mt-4"/>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white mt-5 p-4 text-center">
+  Copyright &copy; 2018 Dev Connector
+</footer>

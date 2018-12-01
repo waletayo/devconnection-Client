@@ -1,0 +1,105 @@
+<!-- Navbar (Signed in) -->
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
+  <div class="container">
+    <a class="navbar-brand" href="home">DevConnector</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mobile-nav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="developers"> Developers
+          </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="post">
+            Post Feed
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="dash-Board">
+            Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <img class="rounded-circle" style="width: 25px;margin-right:5px" src="https://www.gravatar.com/avatar/anything?s=200&d=mm"
+                 alt="" title="You must have a Gravatar connected to your email to display an image" /> Logout
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Add Experience -->
+<div class="add-education">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 m-auto">
+        <a href="dash-Board" class="btn btn-light">
+          Go Back
+        </a>
+        <h1 class="display-4 text-center">Add Your Education</h1>
+        <p class="lead text-center">Add any school, bootcamp, etc that you have attended</p>
+        <small class="d-block pb-3">* = required field</small>
+        <p *ngIf="errorMessage" style="color: dodgerblue" >{{errorMessage}}</p>
+        <form #educationForm (ngSubmit)="doAddEducaton(educationForm)" >
+          <div class="form-group">
+            <input type="text" class="form-control form-control-lg" placeholder="* School Or Bootcamp" [(ngModel)]="education.school"
+                   autocomplete="off"
+                   #school="ngModel" name="school" required />
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control form-control-lg" placeholder="* Degree Or Certificate"
+                   [(ngModel)]="education.degree"
+                   autocomplete="off"
+                   #degree="ngModel"
+                   name="degree" required />
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control form-control-lg" [(ngModel)]="education.fieldOfStudy"
+                   autocomplete="off"
+                   #fieldOfStudy="ngModel" placeholder="Field Of Study" name="fieldOfStudy" />
+          </div>
+          <h6>From Date</h6>
+          <div class="form-group">
+            <input type="date" class="form-control form-control-lg"[(ngModel)]="education.from"
+                   autocomplete="off"
+                   #from="ngModel" name="from" />
+          </div>
+          <h6>To Date</h6>
+          <div class="form-group">
+            <input type="date" class="form-control form-control-lg" [(ngModel)]="education.to"
+                   autocomplete="off"
+                   #to="ngModel" name="to" />
+          </div>
+          <div class="form-check mb-4">
+            <input class="form-check-input" type="checkbox" [(ngModel)]="education.current"
+                   autocomplete="off"
+                   #current="ngModel" name="current" value="" id="current" />
+            <label class="form-check-label" for="current">
+              Current Job
+            </label>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control form-control-lg" placeholder="Program Description" [(ngModel)]="education.description"
+                      autocomplete="off"
+                      #description="ngModel" name="description"></textarea>
+            <small class="form-text text-muted">Tell us about your experience and what you learned</small>
+          </div>
+          <input type="submit" class="btn btn-info btn-block mt-4" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-info text-white mt-5 p-4 text-center">
+  Copyright &copy; 2018 Dev Connector
+</footer>

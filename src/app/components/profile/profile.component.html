@@ -1,0 +1,191 @@
+<!--
+
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
+  <div class="container">
+    <a class="navbar-brand" href="landing.html">DevConnector</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mobile-nav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="profiles.html"> Developers
+          </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="register.html">Sign Up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.html">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+&lt;!&ndash; Profile &ndash;&gt;
+<div class="profile">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-6">
+            <a href="profiles.html" class="btn btn-light mb-3 float-left">Back To Profiles</a>
+          </div>
+          <div class="col-6">
+
+          </div>
+        </div>
+
+        &lt;!&ndash; Profile Header &ndash;&gt;
+        <div class="row" *ngFor="let handle of proResponse">
+          <div class="col-md-12">
+            <div class="card card-body bg-info text-white mb-3">
+              <div class="row">
+                <div class="col-4 col-md-3 m-auto">
+                  <img class="rounded-circle" src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200" alt="" />
+                </div>
+              </div>
+              <div class="text-center">
+                <h1 class="display-4 text-center">{{handle.handle}}</h1>
+                <p class="lead text-center">{{handle.title}}</p>
+                <p>{{handle.location}}</p>
+                <p>
+                  <a class="text-white p-2" href="{{handle.social.youtube}}">
+                    <i class="fas fa-globe fa-2x"></i>
+                  </a>
+                  <a class="text-white p-2" href="{{handle.social.twitter}}">
+                    <i class="fab fa-twitter fa-2x"></i>
+                  </a>
+                  <a class="text-white p-2" href="{{handle.social.facebook}}">
+                    <i class="fab fa-facebook fa-2x"></i>
+                  </a>
+                  <a class="text-white p-2" href="{{handle.social.linkdin}}">
+                    <i class="fab fa-linkedin fa-2x"></i>
+                  </a>
+                  <a class="text-white p-2" href="{{handle.social.instagram}}">
+                    <i class="fab fa-instagram fa-2x"></i>
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        &lt;!&ndash; Profile About &ndash;&gt;
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card card-body bg-light mb-3">
+              <h3 class="text-center text-info">{{handle.user.name}} bio</h3>
+              <p class="lead">{{handle.bio}}</p>
+              <hr />
+              <h3 class="text-center text-info">Skill Set</h3>
+              <div class="row">
+                <div class="d-flex flex-wrap justify-content-center align-items-center">
+                  <div class="p-3">
+                    <i class="fa fa-check"></i> {{handle.skill}}</div>
+                  <div class="p-3">
+                    <i class="fa fa-check"></i> CSS</div>
+                  <div class="p-3">
+                    <i class="fa fa-check"></i> JavaScript</div>
+                  <div class="p-3">
+                    <i class="fa fa-check"></i> Python</div>
+                  <div class="p-3">
+                    <i class="fa fa-check"></i> C#</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        &lt;!&ndash; Profile Creds &ndash;&gt;
+        <div class="row">
+          <div class="col-md-6">
+            <h3 class="text-center text-info">Experience</h3>
+            <ul class="list-group">
+              <li class="list-group-item">
+                <h4>{{handle.experience.company}}</h4>
+                <p>{{handle.experience.from}} {{handle.experience.to}}</p>
+                <p>
+                  <strong>Position:</strong> {{handle.experience.title}}
+
+
+                </p>
+                <p>
+                  <strong>Description:</strong> {{handle.experience.description}}</p>
+              </li>
+            &lt;!&ndash;  <li class="list-group-item">
+                <h4>Sun Microsystems</h4>
+                <p>Oct 2004 - Nov 2011</p>
+                <p>
+                  <strong>Position: </strong> Systems Admin</p>
+                <p>
+                <p>
+                  <strong>Location: </strong> Miami, FL
+                </p>
+                <strong>Description: </strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde doloribus dicta
+                enim excepturi laborum voluptatem nam provident quisquam facere. Quae?</p>
+              </li>&ndash;&gt;
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <h3 class="text-center text-info">Education</h3>
+            <ul class="list-group">
+              <li class="list-group-item">
+                <h4>{{handle.education.school}}</h4>
+                <p>{{handle.education.from}} - {{handle.education.to}}</p>
+                <p>
+                  <strong>Degree: </strong>{{handle.education.degree}}</p>
+                <p>
+                  <strong>Field Of Study: </strong>{{handle.education.fieldOfStudy}}</p>
+                <p>
+                <p>
+                  <strong>Description:</strong> {{handle.education.description}}?</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        &lt;!&ndash; Profile Github &ndash;&gt;
+        <div ref="myRef">
+          <hr />
+          <h3 class="mb-4">Latest Github Repos</h3>
+          <div key={repo.id} class="card card-body mb-2">
+            <div class="row">
+              <div class="col-md-6">
+                <h4>
+                  < href ={{handle.github}}} class="text-info" target="_blank">Repository One
+
+                </h4>
+                <p>Repository description</p>
+              </div>
+              <div class="col-md-6">
+                  <span class="badge badge-info mr-1">
+                    Stars: 44
+                  </span>
+                <span class="badge badge-secondary mr-1">
+                    Watchers: 21
+                  </span>
+                <span class="badge badge-success">
+                    Forks: 122
+                  </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+&lt;!&ndash; Footer &ndash;&gt;
+<footer class="bg-dark text-white mt-5 p-4 text-center">
+  Copyright &copy; 2018 Dev Connector
+</footer>
+&ndash;&gt;
+-->

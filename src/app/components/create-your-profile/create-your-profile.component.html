@@ -1,0 +1,181 @@
+
+<!-- Navbar (Signed in) -->
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
+  <div class="container">
+    <a class="navbar-brand" href="home">DevConnector</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mobile-nav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="developers"> Developers
+          </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="post">
+            Post Feed
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <img class="rounded-circle" style="width: 25px;margin-right:5px" src="https://www.gravatar.com/avatar/anything?s=200&d=mm"
+                 alt="" title="You must have a Gravatar connected to your email to display an image" /> Logout
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Edit Profile -->
+<div class="create-profile">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 m-auto">
+        <a href="ToProfile" class="btn btn-light">
+          Go Back
+        </a>
+        <h1 class="display-4 text-center">Edit Your Profile</h1>
+        <p class="lead text-center">Let's get some information to make your profile stand out</p>
+        <p *ngIf="errorMessage" style="color: dodgerblue" >{{errorMessage}}</p>
+        <small class="d-block pb-3">* = required field</small>
+        <form #addProfileForm (ngSubmit)="doAddProfile(addProfileForm)">
+          <div class="form-group">
+            <input type="text" class="form-control form-control-lg" placeholder="* Profile handle" name="handle" value="myprofilehandle"
+                   [(ngModel)]="addProfile.handle"
+                   autocomplete="off"
+                   #handle="ngModel"
+                   required />
+            <small class="form-text text-muted">A unique handle for your profile URL. Your full name, company name, nickname, etc (This CAN'T be changed later)</small>
+          </div>
+          <div class="form-group">
+            <select class="form-control form-control-lg"  [(ngModel)]="addProfile.status"
+                    autocomplete="off"
+                    #status="ngModel"  name="status">
+              <option value="0">* Select Professional Status</option>
+              <option value="Developer">Developer</option>
+              <option value="Junior Developer">Junior Developer</option>
+              <option value="Senior Developer" selected>Senior Developer</option>
+              <option value="Manager">Manager</option>
+              <option value="Student or Learning">Student or Learning</option>
+              <option value="Instructor">Instructor or Teacher</option>
+              <option value="Intern">Intern</option>
+              <option value="Other">Other</option>
+            </select>
+            <small class="form-text text-muted">Give us an idea of where you are at in your career</small>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control form-control-lg" placeholder="Company"  [(ngModel)]="addProfile.company"
+                   autocomplete="off"
+                   #company="ngModel"  name="company" value="Edusoft" />
+            <small class="form-text text-muted">Could be your own company or one you work for</small>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control form-control-lg" placeholder="Website"  [(ngModel)]="addProfile.website"
+                   autocomplete="off"
+                   #website="ngModel"  name="website" value="http://www.edusoft.test"
+            />
+            <small class="form-text text-muted">Could be your own or a company website</small>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control form-control-lg"  placeholder="Location" [(ngModel)]="addProfile.location"
+                   autocomplete="off"
+                   #location="ngModel"    name="location" value="Miami, FL" />
+            <small class="form-text text-muted">City & state suggested (eg. Boston, MA)</small>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control form-control-lg" placeholder="Skills"  [(ngModel)]="addProfile.skill"
+                   autocomplete="off"
+                   #website="ngModel"  name="skill" value="HTML,CSS,PHP,Python" />
+            <small class="form-text text-muted">Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)</small>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control form-control-lg" placeholder="Github Username"  [(ngModel)]="addProfile.github"
+                   autocomplete="off"
+                   #github="ngModel"  name="github" value="someusername"
+            />
+            <small class="form-text text-muted">If you want your latest repos and a Github link, include your username</small>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control form-control-lg" placeholder="A short bio of yourself"  [(ngModel)]="addProfile.bio"
+                      autocomplete="off"
+                      #bio="ngModel"  name="bio">I am a web developer from Florida with around 8 years experience</textarea>
+            <small class="form-text text-muted">Tell us a little about yourself</small>
+          </div>
+
+          <div class="mb-3">
+            <button type="button" class="btn btn-light">Add Social Network Links</button>
+            <span class="text-muted">Optional</span>
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fab fa-twitter"></i>
+                </span>
+            </div>
+            <input type="text" class="form-control form-control-lg" placeholder="Twitter Profile URL"  [(ngModel)]="addProfile.twitter"
+                   autocomplete="off"
+                   #twitter="ngModel"  name="twitter" value="https://www.twitter.com/johndoe"
+            />
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fab fa-facebook"></i>
+                </span>
+            </div>
+            <input type="text" class="form-control form-control-lg" placeholder="Facebook Page URL"  [(ngModel)]="addProfile.facebook"
+                   autocomplete="off"
+                   #facebook="ngModel"  name="facebook" />
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fab fa-linkedin"></i>
+                </span>
+            </div>
+            <input type="text" class="form-control form-control-lg" placeholder="Linkedin Profile URL"  [(ngModel)]="addProfile.linkdin"
+                   autocomplete="off"
+                   #linkdin="ngModel"  name="linkdin" />
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fab fa-youtube"></i>
+                </span>
+            </div>
+            <input type="text" class="form-control form-control-lg" placeholder="YouTube Channel URL"  [(ngModel)]="addProfile.youtube"
+                   autocomplete="off"
+                   #youtube="ngModel"  name="youtube" />
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fab fa-instagram"></i>
+                </span>
+            </div>
+            <input type="text" class="form-control form-control-lg" placeholder="Instagram Page URL"  [(ngModel)]="addProfile.instagram"
+                   autocomplete="off"
+                   #instagram="ngModel"  name="instagram" />
+          </div>
+          <input type="submit" class="btn btn-info btn-block mt-4" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white mt-5 p-4 text-center">
+  Copyright &copy; 2018 Dev Connector
+</footer>
